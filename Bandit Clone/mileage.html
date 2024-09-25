@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Styling for the page */
+        canvas {
+            max-width: 800px;
+            max-height: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .workout-table {
+            display: none;
+            margin-top: 20px;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .workout-table.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            font-size: 1.1em;
+        }
+
+        /* Empty state */
+        #emptyState {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <header class="bg-gray-900 text-white py-6">
+        <h2 class="text-5xl font-bold mb-8 text-center">The Program</h2>
+        <nav class="flex justify-center mt-4 space-x-6">
+            <a href="index.html" class="hover:text-yellow-400">Home</a>
+            <a href="mileage.html" class="hover:text-yellow-400">Weekly Program</a>
+            <a href="profile.html" class="hover:text-yellow-400">Profile</a>
+        </nav>
+    </header>
+
+    <main class="py-10">
+        <h1 class="text-center text-3xl font-bold mb-6">Weekly Run Mileage</h1>
+
+        <!-- Centered and larger bar chart -->
+        <div class="flex justify-center">
+            <canvas id="mileageChart"></canvas>
+        </div>
+
+        <!-- Empty state message -->
+        <div id="emptyState">Click a week on the chart to see the workout details.</div>
+
+        <!-- Workout table (initially hidden) -->
+        <div id="workoutDetails" class="workout-table">
+            <h2 class="text-center text-3xl font-bold mb-6">Workout Details</h2>
+            <table class="table-auto w-full border-collapse">
+                <thead>
+                    <tr class="bg-gray-900 text-white">
+                        <th class="p-4">Date</th>
+                        <th class="p-4">Workout Type</th>
+                        <th class="p-4">Pace (min/mile)</th>
+                        <th class="p-4">Miles</th>
+                    </tr>
+                </thead>
+                <tbody id="workoutTableBody">
+                    <!-- Table rows will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const weeks = [
+            'Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5',
+            'Week 6', 'Week 7', 'Week 8', 'Week 9', 'Week 10',
+            'Week 11', 'Week 12', 'Week 13', 'Week 14', 'Week 15', 'Week 16'
+        ];
+
+        let userPaces = JSON.parse(localStorage.getItem('paces')) || {
+            easyPace: "--",
+            tempoPace: "--",
+            interval1Pace: "--",
+            interval2Pace: "--"
+        };
+
+        let workoutData = {}; // This will hold the loaded workout data
+        let weeklyMileage = []; // This will hold the calculated weekly mileage
+
+        // Function to load workout data from JSON
+        async function loadWorkoutData() {
+            try {
+                const response = await fetch('workoutData.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load workout data');
+                }
+                workoutData = await response.json();
+                calculateWeeklyMileage();
+            } catch (error) {
+                console.error('Error loading workout data:', error);
+                alert("Failed to load workout data. Please check your JSON file.");
+            }
+        }
+
+        // Function to calculate the total mileage for each week
+        function calculateWeeklyMileage() {
+            weeklyMileage = Object.keys(workoutData).map(weekIndex => {
+                const weekWorkouts = workoutData[weekIndex];
+                const totalMiles = weekWorkouts.reduce((sum, workout) => sum + workout.miles, 0);
+                return totalMiles;
+            });
+
+            createMileageChart();
+        }
+
+        // Function to create the bar chart
+        function createMileageChart() {
+            const ctx = document.getElementById('mileageChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: weeks,
+                    datasets: [{
+                        label: 'Total Miles Run',
+                        data: weeklyMileage,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    onClick: function(event, elements) {
+                        if (elements.length > 0) {
+                            const clickedElementIndex = elements[0].index;
+                            showWorkoutDetails(clickedElementIndex);
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to display workout details for a selected week
+        function showWorkoutDetails(weekIndex) {
+            const tableBody = document.getElementById('workoutTableBody');
+            tableBody.innerHTML = ''; // Clear the previous data
+
+            const workouts = workoutData[weekIndex];
+            if (!workouts) {
+                alert("No workout data found for this week.");
+                return;
+            }
+
+            workouts.forEach(workout => {
+                const pace = getPaceForWorkout(workout.type);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${workout.date}</td>
+                    <td><a href="workout.html?type=${encodeURIComponent(workout.type)}">${workout.type}</a></td>
+                    <td>${pace}</td>
+                    <td>${workout.miles}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            // Hide empty state and show the workout table
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('workoutDetails').classList.add('active');
+        }
+
+        // Function to get the right pace for each workout type
+        function getPaceForWorkout(type) {
+            switch(type) {
+                case 'Easy Run':
+                    return userPaces.easyPace;
+                case 'Tempo Run':
+                    return userPaces.tempoPace;
+                case 'Interval Training':
+                    return userPaces.interval1Pace;
+                case 'Long Run':
+                    return userPaces.easyPace;
+                case 'Recovery Run':
+                    return userPaces.easyPace;
+                default:
+                    return '--';
+            }
+        }
+
+        // Initialize the chart and load data on page load
+        window.onload = async function() {
+            await loadWorkoutData(); // Load workout data and calculate mileage
+        };
+    </script>
+</body>
+</html>

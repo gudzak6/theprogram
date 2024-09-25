@@ -1,0 +1,173 @@
+  <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <head>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title> The Program </title>
+                    <script src="https://cdn.tailwindcss.com"></script>
+                <style>/* ! tailwindcss v3.4.5 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.mx-auto{margin-left:auto;margin-right:auto}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-4{margin-top:1rem}.flex{display:flex}.w-72{width:18rem}.w-full{width:100%}.max-w-4xl{max-width:56rem}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.rounded-lg{border-radius:0.5rem}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.p-6{padding:1.5rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-5xl{font-size:3rem;line-height:1}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:text-yellow-400:hover{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}@media (min-width: 768px){.md\:mb-0{margin-bottom:0px}.md\:mr-8{margin-right:2rem}.md\:w-1\/3{width:33.333333%}.md\:w-2\/3{width:66.666667%}.md\:flex-row{flex-direction:row}}</style></head>
+                <body class="bg-white text-gray-900">
+                    <header class="bg-gray-900 text-white py-6">
+                        <h2 class="text-5xl font-bold mb-8 text-center">The Program</h2>
+                        <h1 class="text-center text-3xl font-bold"></h1>
+                        <nav class="flex justify-center mt-4 space-x-6">
+                            <a href="index.html" class="hover:text-yellow-400">Home</a>
+                            <a href="mileage.html" class="hover:text-yellow-400">Weekly Program</a>
+                            <a href="profile.html" class="hover:text-yellow-400">Profile</a>
+                            <a href="partnerRun.html" class="hover:text-yellow-400">PartnerRun</a>
+
+                
+                
+                        </nav>
+                    </header>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Weekly Saturday Workout</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <style>
+                /* Styling for the page */
+                body {
+                    font-family: 'Arial', sans-serif;
+                }
+        
+                .container {
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+        
+                .workout-card {
+                    background-color: #f3f4f6;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+        
+                .workout-description {
+                    font-size: 1.25rem;
+                    margin-bottom: 20px;
+                }
+        
+                .signup-list {
+                    margin-top: 20px;
+                }
+        
+                .signup-list table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+        
+                .signup-list th, .signup-list td {
+                    padding: 10px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                }
+        
+                .signup-list th {
+                    background-color: #374151;
+                    color: white;
+                }
+        
+                .signup-list td {
+                    background-color: #f9fafb;
+                }
+            </style>
+        </head>
+        <body class="bg-white text-gray-900">
+            <div class="container mt-8">
+                <!-- Workout Info -->
+                <div class="workout-card">
+                    <h3 class="text-3xl font-bold mb-4" id="workoutDate">Saturday Workout</h3>
+                    <p class="workout-description" id="workoutDescription">This week's workout is a 10-mile long run at an easy pace.</p>
+                </div>
+        
+                <!-- Sign-up List -->
+                <div class="signup-list mt-6">
+                    <h4 class="text-2xl font-bold mb-4">People Signed Up for the Workout</h4>
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Pace (min/mile)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="signupTableBody">
+                            <!-- Rows of people who signed up will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+            <script>
+                // Calculate the next Saturday
+                function getNextSaturday() {
+                    const today = new Date();
+                    const nextSaturday = new Date();
+                    nextSaturday.setDate(today.getDate() + (6 - today.getDay() + 7) % 7);
+                    return nextSaturday;
+                }
+        
+                // Format the date as "Month Day, Year"
+                function formatDate(date) {
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    return date.toLocaleDateString(undefined, options);
+                }
+        
+                // Load the workout data from the JSON file
+                async function loadWorkoutData() {
+                    try {
+                        const response = await fetch('saturday-workout.json');
+                        if (!response.ok) {
+                            throw new Error('Failed to load workout data');
+                        }
+                        const workout = await response.json();
+
+                         // Get the user's name and pace
+                const userName = localStorage.getItem('userName') || 'You';
+                const userPace = localStorage.getItem('easyPace') || 'Not set';
+
+                // Add the user's pace to the workout data
+                workout.signedUp.unshift({ name: userName, pace: userPace });
+
+                        
+                        // Set the workout description and populate the sign-up table
+                        setWorkoutDetails(workout);
+                        populateSignupTable(workout.signedUp);
+                    } catch (error) {
+                        console.error('Error loading workout data:', error);
+                        alert("Failed to load workout data. Please check your JSON file.");
+                    }
+                }
+        
+                // Set the workout date and description
+                function setWorkoutDetails(workout) {
+                    const saturday = getNextSaturday();
+                    document.getElementById('workoutDate').textContent = `Saturday Workout - ${formatDate(saturday)}`;
+                    document.getElementById('workoutDescription').textContent = workout.description;
+                }
+        
+                // Populate the sign-up table with the people and their pace
+                function populateSignupTable(signedUp) {
+                    const tableBody = document.getElementById('signupTableBody');
+                    tableBody.innerHTML = ''; // Clear any existing rows
+        
+                    signedUp.forEach(person => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${person.name}</td>
+                            <td>${person.pace}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                }
+        
+                // Initialize the page on load
+                window.onload = function() {
+                    loadWorkoutData();
+                };
+            </script>
+        </body>
+        </html>
+        

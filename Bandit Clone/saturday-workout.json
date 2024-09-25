@@ -1,0 +1,9 @@
+{
+    "description": "This week's workout is a 10-mile long run at an easy pace.",
+    "signedUp": [
+      { "name": "Alice Johnson", "pace": "8:30" },
+      { "name": "Bob Smith", "pace": "7:45" },
+      { "name": "Carol Lee", "pace": "9:00" }
+    ]
+  }
+  
